@@ -5,10 +5,11 @@ from fastapi import HTTPException
 from src.models import Cat, Mission, Target
 from src.schems import CatCreate, MissionCreate
 
+
 # Cats :cat:
 # emotes doesn't work T_T
 def create_cat(db: Session, cat: CatCreate):
-    db_cat = Cat(**cat.dict())
+    db_cat = Cat(**cat.model_dump())
     db.add(db_cat)
     db.commit()
     db.refresh(db_cat)
@@ -40,7 +41,7 @@ def create_mission(db: Session, mission: MissionCreate):
     db.add(db_mission)
     db.commit()
     for target in mission.targets:
-        db_target = Target(**target.dict(), mission_id=db_mission.id)
+        db_target = Target(**target.model_dump(), mission_id=db_mission.id)
         db.add(db_target)
     db.commit()
     db.refresh(db_mission)
