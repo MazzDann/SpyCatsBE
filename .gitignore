@@ -2,4 +2,5 @@
 asyncline/
 SCvenvB/
 test/
+.db
 
