@@ -1,7 +1,7 @@
 from pydantic import BaseModel, field_validator
 from typing import List, Optional
 
-from src.ext_api import validate_breed
+from .ext_api import validate_breed
 
 class CatBase(BaseModel):
     name: str

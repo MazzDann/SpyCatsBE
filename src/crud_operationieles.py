@@ -2,8 +2,8 @@ from sqlalchemy.orm import Session
 # from . import models, schems
 from fastapi import HTTPException
 
-from src.models import Cat, Mission, Target
-from src.schems import CatCreate, MissionCreate
+from .models import Cat, Mission, Target
+from .schems import CatCreate, MissionCreate
 
 
 # Cats :cat:
