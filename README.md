@@ -45,3 +45,6 @@ A BackEnd for Spy Cat Agency task
   - `PUT /missions/{mission_id}/assign_cat`: Assign a cat to a mission.
   - `PUT /targets/{target_id}/notes`: Update target notes.
   - `PUT /targets/{target_id}/complete`: Mark a target as complete.
+
+  View in postman:
+  [Postman](https://mazzdann-3164795.postman.co/workspace/Daniyl-'s-Workspace~ba9f709f-0385-4304-8310-92b458cae1d4/collection/48580003-4acae261-5889-4484-960e-9da25d5355ce?action=share&creator=48580003) 
