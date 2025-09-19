@@ -42,8 +42,8 @@ def get_cat(cat_id: int, db: Session = Depends(get_db)):
     return crud_operationieles.get_cat(db, cat_id)
 
 @app.put("/cats/{cat_id}/salary", response_model=schems.Cat)
-def update_cat_salary(cat_id: int, salary: float, db: Session = Depends(get_db)):
-    return crud_operationieles.update_cat_salary(db, cat_id, salary)
+def update_cat_salary(cat_id: int, salary_update: schems.CatSalaryUpdate, db: Session = Depends(get_db)):
+    return crud_operationieles.update_cat_salary(db, cat_id, salary_update.salary)
 
 @app.delete("/cats/{cat_id}")
 def delete_cat(cat_id: int, db: Session = Depends(get_db)):

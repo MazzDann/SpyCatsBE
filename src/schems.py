@@ -49,3 +49,6 @@ class Target(TargetBase):
     mission_id: int
     class Config:
         orm_mode = True
+
+class CatSalaryUpdate(BaseModel):
+    salary: float
