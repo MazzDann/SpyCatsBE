@@ -15,7 +15,9 @@ def create_cat(db: Session, cat: CatCreate):
     db.refresh(db_cat)
     return db_cat
 
-def get_cats(db: Session):return db.query(Cat).all()
+def get_cats(db: Session):
+    print (db.query(Cat).all())
+    return db.query(Cat).all()
 
 def get_cat(db: Session, cat_id: int):
     cat = db.query(Cat).filter(Cat.id == cat_id).first()

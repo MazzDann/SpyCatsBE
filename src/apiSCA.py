@@ -1,8 +1,27 @@
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from . import crud_operationieles, schems, db_conf as TheDB
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000", # This is the origin you want to allow
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"], # Allows all HTTP methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"], # Allows all headers
+)
+
+@app.get("/")
+async def read_root():
+    return {"message": "Hello from FastAPI!"}
+
 def get_db():
     db = TheDB.SessionLocal()
     try:yield db
@@ -15,6 +34,7 @@ def create_cat(cat: schems.CatCreate, db: Session = Depends(get_db)):
 
 @app.get("/cats/", response_model=list[schems.Cat])
 def list_cats(db: Session = Depends(get_db)):
+    print(crud_operationieles.get_cats(db))
     return crud_operationieles.get_cats(db)
 
 @app.get("/cats/{cat_id}", response_model=schems.Cat)
